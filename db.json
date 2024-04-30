@@ -90,6 +90,13 @@
       "category": "Cereals",
       "amount": "530",
       "id": 13
+    },
+    {
+      "date": "2024-04-30",
+      "description": "TM",
+      "category": "SE",
+      "amount": "2000",
+      "id": 14
     }
   ]
 }
