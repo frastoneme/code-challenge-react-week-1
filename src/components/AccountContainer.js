@@ -1,26 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
-  const [transaction, setTransaction] = useState([])
-  const [query, setQuery] = useState("")
-  useEffect(() => {
-    fetch("http://localhost:8001/transactions?q=" + query)
-      .then((resp) => resp.json())
-      .then(transaction => setTransaction(transaction))
-  }, [query])
-  function handleSearch(e) {
-    setQuery(e.target.value)
+  const [transactions, setTransactions] = useState([]);
+  function fetchTransactions() {
+    fetch("http://localhost:8001/transactions")
+      .then((response) => response.json())
+      .then(setTransactions);
   }
+  useEffect(fetchTransactions, []);
+
+  function handleSearch(search) {
+    if (search === "") {
+      fetchTransactions(transactions);
+    } else {
+      const findTransactions = transactions.filter((transaction) => {
+        return transaction.description
+          .toLowerCase()
+          .includes(search.toLowerCase());
+      });
+      setTransactions(findTransactions);
+    }
+  }
+  function removeData(id) {
+    const reviewTransactions = transactions.filter((transaction) => {
+      return transaction.id !== id;
+    });
+    setTransactions(reviewTransactions);
+  }
+
+  function handleAddTransaction(transaction) {
+    setTransactions([...transactions, transaction]);
+  }
+
   return (
     <div>
       <Search handleSearch={handleSearch} />
-      <AddTransactionForm />
-      <TransactionsList transactions={transaction} />
+      <AddTransactionForm handleAddTransaction={handleAddTransaction} />
+      <TransactionsList transactions={transactions} deleteRecord={removeData} />
     </div>
   );
 }
-
 export default AccountContainer;
