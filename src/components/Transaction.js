@@ -9,7 +9,7 @@ function Transaction({ description, date, category, id, amount, deleteList }) {
       <td>{amount}</td>
       <td>
         <button
-          style={{ color: "black", borderRadius: "5px" }}
+          style={{ color: "black", borderRadius: "10px" }}
           onClick={() => deleteList(id)}
         >
           Delete Record

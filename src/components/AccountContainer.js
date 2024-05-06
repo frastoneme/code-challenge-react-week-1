@@ -5,16 +5,18 @@ import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
   const [transactions, setTransactions] = useState([]);
+
   function fetchTransactions() {
     fetch("http://localhost:8001/transactions")
       .then((response) => response.json())
       .then(setTransactions);
   }
+
   useEffect(fetchTransactions, []);
 
   function handleSearch(search) {
     if (search === "") {
-      fetchTransactions(transactions);
+      fetchTransactions();
     } else {
       const findTransactions = transactions.filter((transaction) => {
         return transaction.description
@@ -24,11 +26,16 @@ function AccountContainer() {
       setTransactions(findTransactions);
     }
   }
+
   function removeData(id) {
     const reviewTransactions = transactions.filter((transaction) => {
       return transaction.id !== id;
     });
     setTransactions(reviewTransactions);
+
+    fetch(`http://localhost:8001/transactions/${id}`, {
+      method: "DELETE",
+    });
   }
 
   function handleAddTransaction(transaction) {
@@ -43,4 +50,5 @@ function AccountContainer() {
     </div>
   );
 }
+
 export default AccountContainer;

@@ -1,27 +1,6 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "date": "2019-12-01",
-      "description": "Paycheck from Bob's Burgers",
-      "category": "Income",
-      "amount": 1000
-    },
-    {
-      "id": 2,
-      "date": "2019-12-01",
-      "description": "South by Southwest Quinoa Bowl at Fresh & Co",
-      "category": "Food",
-      "amount": -10.55
-    },
-    {
-      "id": 3,
-      "date": "2019-12-02",
-      "description": "South by Southwest Quinoa Bowl at Fresh & Co",
-      "category": "Food",
-      "amount": -10.55
-    },
-    {
       "id": 4,
       "date": "2019-12-04",
       "description": "Sunglasses, Urban Outfitters",
@@ -85,25 +64,25 @@
       "amount": -975
     },
     {
-      "date": "2024-04-28",
-      "description": "maize",
-      "category": "Cereals",
-      "amount": "530",
-      "id": 13
-    },
-    {
-      "date": "2024-04-30",
-      "description": "TM",
-      "category": "SE",
-      "amount": "2000",
-      "id": 14
-    },
-    {
       "date": "2024-05-03",
       "description": "Ugandan Millet",
       "category": "Cereals",
       "amount": "320",
       "id": 15
+    },
+    {
+      "date": "2024-05-07",
+      "description": "avocado",
+      "category": "maize",
+      "amount": "1000",
+      "id": 16
+    },
+    {
+      "date": "2024-05-05",
+      "description": "Uganda",
+      "category": "matoke",
+      "amount": "3500",
+      "id": 17
     }
   ]
 }
